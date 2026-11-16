@@ -1,34 +1,43 @@
-# 🧠 AI Code Reviewer (Backend)
+# AI Code Reviewer
 
-This is the backend service for the **AI Code Reviewer** — an intelligent tool that analyzes and reviews source code for correctness, readability, style, and performance using AI.
+Paste code in Java, C, C++ or JavaScript and get an AI-powered review covering bugs, readability, performance and best practices.
 
----
+**Live demo:** _add your Vercel link here_
 
-## 🚀 Features
+## Tech Stack
+- **Frontend:** React, Vite, Prism (editor highlighting), react-markdown
+- **Backend:** Node.js, Express, express-rate-limit
+- **AI:** Google Gemini API
 
-- Analyze code with AI-powered feedback
-- Supports multiple languages (e.g., Python, JavaScript)
-- RESTful API endpoints
-- Secure and environment-configurable
-- Easy to integrate with frontend or CLI tools
-
----
-
-## 🛠 Tech Stack
-
-- **Node.js**
-- **Express**
-- **OpenAI API** (or other LLMs)
-- **dotenv** for configuration
-
----
-
-## 📦 Installation
+## Run locally
 
 ```bash
-# Clone the repository
-git clone https://github.com/your-username/ai-code-reviewer.git
-cd ai-code-reviewer/backend
-
-# Install dependencies
+# Backend
+cd AI-Code-Reviewer/Backend
+cp .env.example .env        # then add your GOOGLE_GEMINI_KEY
 npm install
+npm start                   # http://localhost:3000
+
+# Frontend (new terminal)
+cd AI-Code-Reviewer/Frontend
+cp .env.example .env
+npm install
+npm run dev                 # http://localhost:5173
+```
+
+Get a Gemini key at https://aistudio.google.com/apikey.
+
+## Environment variables
+
+| Where | Name | Purpose |
+|-------|------|---------|
+| Backend | `GOOGLE_GEMINI_KEY` | Gemini API key |
+| Backend | `FRONTEND_URL` | Allowed frontend origin(s) for CORS, comma-separated |
+| Backend | `PORT` | Set automatically by most hosts |
+| Frontend | `VITE_API_URL` | Public URL of the backend |
+
+## Deployment
+- Backend: Render web service (root `AI-Code-Reviewer/Backend`, build `npm install`, start `npm start`)
+- Frontend: Vercel (root `AI-Code-Reviewer/Frontend`, framework Vite)
+
+The API is rate limited to 10 requests per minute per IP.

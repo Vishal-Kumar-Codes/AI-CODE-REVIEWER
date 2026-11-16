@@ -2,7 +2,7 @@ require('dotenv').config();
 const axios = require('axios');
 
 const API_KEY = process.env.GOOGLE_GEMINI_KEY;
-const ENDPOINT = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
+const ENDPOINT = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent?key=${API_KEY}`;
 
 const SYSTEM_INSTRUCTION = `
 AI System Instruction: Senior Code Reviewer (7+ Years of Experience)
@@ -139,7 +139,9 @@ async function runGemini(code) {
     return text || "No response text received.";
   } catch (error) {
     console.error("Gemini API Error:", error.response?.data || error.message);
-    return "Error calling Gemini API.";
+    const err = new Error("Gemini API error");
+    err.status = error.response?.status;
+    throw err;
   }
 }
 
