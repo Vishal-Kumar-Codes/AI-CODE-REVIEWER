@@ -2,7 +2,7 @@
 
 Paste code in Java, C, C++ or JavaScript and get an AI-powered review covering bugs, readability, performance and best practices.
 
-**Live demo:** _add your Vercel link here_
+**Live demo:** https://ai-code-reviewer-amber-six.vercel.app/
 
 ## Tech Stack
 - **Frontend:** React, Vite, Prism (editor highlighting), react-markdown
